@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import layout from '../templates/components/ttr-tetromino-square';
 
 const {
   Component,
@@ -7,7 +6,6 @@ const {
 } = Ember;
 
 export default Component.extend({
-  layout: layout,
   tagName: 'rect',
   attributeBindings: ['x', 'y', 'width', 'height'],
   classNameBindings: ['squareClass'],

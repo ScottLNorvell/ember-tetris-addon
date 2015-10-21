@@ -7,7 +7,7 @@ const {
 } = Ember;
 
 export default Component.extend({
-  layout: layout
+  layout: layout,
   classNames: ['ttr-scoreboard'],
   scoring: inject.service()
 });

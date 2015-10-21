@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import layout from '../templates/components/ttr-up-next';
 
 const {
   Component,
@@ -7,6 +8,7 @@ const {
 } = Ember;
 
 export default Component.extend({
+  layout: layout,
   tagName: 'svg',
   classNames: ['ttr-up-next'],
   attributeBindings: ['width', 'height'],
