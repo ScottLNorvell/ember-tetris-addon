@@ -1,0 +1,24 @@
+<div>
+  <button {{action 'toggleControls'}}>Controls</button>
+  {{#if showControls}}
+    <ul>
+      <li>&rarr; RIGHT</li>
+      <li>&larr; LEFT</li>
+      <li>&darr; DOWN</li>
+      <li>&uarr; ROTATE</li>
+      <li>'p' PAUSE</li>
+      <li>'space' INSTAPLAY</li>
+    </ul>
+  {{/if}}
+</div>
+
+{{#if gameOver}}
+  <h5>GAME OVER!</h5>
+{{else}}
+  {{#if isPlaying}}
+    <button {{action 'pause'}}>PAUSE</button>
+  {{else}}
+    <button {{action 'pause'}}>PLAY</button>
+  {{/if}}
+{{/if}}
+<button {{action 'newGame'}}>NEW GAME</button>
