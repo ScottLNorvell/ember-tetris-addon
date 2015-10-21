@@ -27,7 +27,8 @@ export default Service.extend({
   queue: computed('bag.length', function() {
     let bag = this.get('bag');
     let len = bag.get('length');
-    return bag.slice(len - 2, len);
+    let queue = bag.slice(len - 2, len);
+    return Ember.A(queue);
   }),
 
   bag: Ember.A(),
@@ -46,7 +47,9 @@ export default Service.extend({
     let bag = this.get('bag');
     if (bag.get('length') < 4) {
       let newBag = shuffle(this.get('tetrominoTypes'));
-      this.set('bag', newBag.concat(bag));
+      for (let i = 0, len = newBag.length; i < len; i++) {
+        bag.unshiftObject(newBag[i]);
+      }
     }
   }
 });

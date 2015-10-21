@@ -14,7 +14,7 @@ const {
 export default Service.extend({
   scoring: inject.service(),
   squares: computed(function() {
-    let squares = [];
+    let squares = Ember.A([]);
     squares.__pushObject = squares.pushObject;
     let squareSet = this.get('squareSet');
     let service = this;
@@ -29,7 +29,7 @@ export default Service.extend({
       if (lines[pt.y]) {
         lines[pt.y].pushObject(pt);
       } else {
-        lines[pt.y] = [pt];
+        lines[pt.y] = Ember.A([pt]);
       }
       this.__pushObject(pt);
     };
@@ -54,7 +54,7 @@ export default Service.extend({
       if (newLines[pt.y]) {
         newLines[pt.y].pushObject(pt);
       } else {
-        newLines[pt.y] = [pt];
+        newLines[pt.y] = Ember.A([pt]);
       }
       squareSet.add(toSquareKey(pt));
     }

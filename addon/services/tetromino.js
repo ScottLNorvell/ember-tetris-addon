@@ -50,13 +50,13 @@ export default Service.extend({
   positions: computed('type', function() {
     let type = this.get('type');
     let data = tetrominos[type].positions;
-    let positions = [];
+    let positions = Ember.A();
     for (let i = 0, len = data[0].length; i < len; i++) {
       let position = {
         x: data[0][i],
         y: data[1][i]
       };
-      positions.push(position);
+      positions.pushObject(position);
     }
     return positions;
   }),
@@ -66,7 +66,7 @@ export default Service.extend({
     let xPos = this.get('xPos');
     let yPos = this.get('yPos');
     let [originX, originY] = this.get('rotationOrigin'); // jshint ignore:line
-    return positions.map((pos) => {
+    let transformedPositions = positions.map((pos) => {
       let {x,y} = pos;
       if (rotation) {
         [x, y] = eval(rotations[rotation]);
@@ -76,6 +76,7 @@ export default Service.extend({
         y: y + yPos
       };
     });
+    return Ember.A(transformedPositions);
   },
 
   locations: computed('positions', 'xPos', 'yPos', 'rotation', 'rotationOrigin', function() {
