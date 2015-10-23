@@ -49,15 +49,15 @@ export default Service.extend({
     let squares = this.get('squares');
     let newLines = Ember.Object.create();
     squareSet.clear();
-    for (let i = 0, len = squares.length; i < len; i++) {
-      let pt = squares[i];
+    squares.forEach((square) => {
+      let pt = square;
       if (newLines[pt.y]) {
         newLines[pt.y].pushObject(pt);
       } else {
         newLines[pt.y] = Ember.A([pt]);
       }
       squareSet.add(toSquareKey(pt));
-    }
+    });
     this.set('lines', newLines);
   },
 
@@ -70,20 +70,20 @@ export default Service.extend({
 
   shiftLines(linesToDelete) {
     let squares = this.get('squares');
-    for (let i = 0, len = squares.length; i < len; i++) {
-      let pt = squares[i];
+    squares.forEach((square) => {
+      let pt = square;
       let shift = this._determineShift(linesToDelete, pt);
       if (shift) {
         pt.set('y', pt.get('y') + shift);
       }
-    }
+    });
   },
 
   _determineShift(linesToDelete, pt) {
     let shift = 0;
-    for (let i = 0, len = linesToDelete.length; i < len; i++) {
-      if (pt.y < linesToDelete[i]) { shift++; }
-    }
+    linesToDelete.forEach((line) => {
+      if (pt.y < line) { shift++; }
+    });
     return shift;
   },
 
@@ -100,14 +100,15 @@ export default Service.extend({
     let lines = this.get('lines');
     let lineNos = Object.keys(lines);
     let linesToDelete = [];
-    for (let i = 0, len = lineNos.length; i < len; i++) {
-      let yVal = lineNos[i];
-      let line = lines[yVal];
-      if (line.length === 10) {
+
+    lineNos.forEach((lineNo) => {
+      let yVal = lineNo;
+      let line = lines[lineNo];
+      if(line.length === 10) {
         linesToDelete.push(yVal);
-        line.setEach('type', 'x');
+        lines.setEach('type','x');
       }
-    }
+    });
     return linesToDelete;
   },
 
