@@ -19,7 +19,7 @@ export default Component.extend({
     }
   }),
   layout: layout,
-  classNames: ['tetris-board'],
+  classNames: ['ttr-board'],
   tetromino: inject.service(),
   played: inject.service(),
   playedSquares: computed.alias('played.squares'),

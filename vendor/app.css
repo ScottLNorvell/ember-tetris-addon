@@ -1,7 +1,8 @@
-.tetris-board {
+.ttr-board {
   border: 1px solid black; }
 
-.grid-line {
+.ttr-grid-line {
+  /*TODO: change to a more reasonable color? */
   stroke: #bada55;
   stroke-width: 1; }
 
@@ -45,7 +46,7 @@
   stroke: #676767;
   fill: grey; }
 
-.ttr-stuff {
+.ttr-dashboard {
   position: absolute;
   left: 360px;
   top: 100px; }
