@@ -93,6 +93,15 @@ export default Service.extend({
     run.next(() => this.setAutoFall());
   },
 
+  onGameOver() {
+    if (confirm('Game Over!!! Play again?')) {
+      this.resetBoard();
+    } else {
+      // What should happen here????
+      console.log('no more playing for you!');
+    }
+  },
+
   stopGame() {
     this.setProperties({
       paused: true,
@@ -100,12 +109,7 @@ export default Service.extend({
     });
     caf(afID);
     run.next(() => {
-      if (confirm('Game Over!!! Play again?')) {
-        this.resetBoard();
-      } else {
-        // What should happen here????
-        console.log('no more playing for you!');
-      }
+      this.onGameOver();
     });
   },
 
@@ -151,8 +155,12 @@ export default Service.extend({
     }
   },
 
-  setup() {
+  setupControls() {
     $(document).on('keydown', this._handleKeydown.bind(this));
+  },
+
+  setup() {
+    this.setupControls();
     run.next(() => this.setAutoFall());
   }
 });
