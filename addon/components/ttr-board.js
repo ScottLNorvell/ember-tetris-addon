@@ -4,10 +4,20 @@ import layout from '../templates/components/ttr-board';
 const {
   Component,
   computed,
-  inject
+  inject,
+  on,
+  isPresent
 } = Ember;
 
 export default Component.extend({
+  _setScale: on('init', function() {
+    let width = this.get('width');
+
+    if (isPresent(width)) {
+      let scale = Math.floor(width/10);
+      this.set('scale', scale);
+    }
+  }),
   layout: layout,
   classNames: ['tetris-board'],
   tetromino: inject.service(),
@@ -15,8 +25,8 @@ export default Component.extend({
   playedSquares: computed.alias('played.squares'),
   controls: inject.service(),
   tagName: 'svg',
-  attributeBindings: ['width', 'height'],
-  width: computed('scale', function() {
+  attributeBindings: ['_width:width', 'height'],
+  _width: computed('scale', function() {
     let scale = this.get('scale');
     return `${scale * 10}px`;
   }),
