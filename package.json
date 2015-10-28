@@ -1,6 +1,6 @@
 {
   "name": "ember-tetris",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "This lets you drop a tetris game in the middle of your ember app should you be so inclined.",
   "directories": {
     "doc": "doc",
