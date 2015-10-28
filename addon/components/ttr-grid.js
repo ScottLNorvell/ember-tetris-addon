@@ -35,4 +35,10 @@ export default Component.extend({
     }
     return positions;
   }),
+  xLimit: computed('scale', function() {
+    return this.get('scale') * xLines;
+  }),
+  yLimit: computed('scale', function() {
+    return this.get('scale') * yLines;
+  })
 });
