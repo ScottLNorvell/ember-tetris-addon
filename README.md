@@ -9,6 +9,9 @@ This is the last ember addon you will ever need! Ember Tetris allows you to inse
 - Easter Eggs
 - and so Much MORE...
 
+## Demo
+You can check out a live demo [here](http://scottlnorvell.com/ember-tetris-addon/).
+
 ## Usage
 Inside your app's folder run `ember install ember-tetris`.
 
