@@ -47,9 +47,9 @@ export default Service.extend({
     let bag = this.get('bag');
     if (bag.get('length') < 4) {
       let newBag = shuffle(this.get('tetrominoTypes'));
-      for (let i = 0, len = newBag.length; i < len; i++) {
-        bag.unshiftObject(newBag[i]);
-      }
+      newBag.forEach((tetrominoType) => {
+        bag.unshiftObject(tetrominoType);
+      });
     }
   }
 });
